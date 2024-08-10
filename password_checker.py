@@ -1,6 +1,18 @@
 import re
 
 def validate_password(password):
+  """
+  Validates a password based on the following criteria:
+  - The password must be between 8 and 20 characters long.
+  - The password must contain at least one digit.
+  - The password must contain at least one uppercase letter.
+  - The password must contain at least one lowercase letter.
+  - The password must contain at least one special character from the following: !@#$%^&*()_+-=[]{}|;:,.<>?/~`
+  Args:
+    password (str): The password to be validated.
+  Returns:
+    bool: True if the password is valid, False otherwise.
+  """
   if len(password) < 8 or len(password) > 20:
     return False
   
@@ -19,6 +31,20 @@ def validate_password(password):
   return True
 
 def validate_password_with_error_messages(password):
+  """
+  Validates a password based on the following criteria:
+  - The password length should be between 8 and 20 characters.
+  - The password should contain at least one digit.
+  - The password should contain at least one uppercase letter.
+  - The password should contain at least one lowercase letter.
+  - The password should contain at least one special character from the following: !@#$%^&*()_+-=[]{}|;:,.<>?/~`
+  Args:
+    password (str): The password to be validated.
+  Raises:
+    ValueError: If the password does not meet any of the above criteria.
+  Returns:
+    bool: True if the password is valid.
+  """
   if len(password) < 8 or len(password) > 20:
     raise ValueError("Password length should be between 8 and 20 characters.")
   
@@ -38,6 +64,20 @@ def validate_password_with_error_messages(password):
   return True
 
 def validate_password_with_error_messages_regex(password):
+  """
+  Validates a password using regular expressions and raises ValueError with specific error messages for each validation rule.
+  Parameters:
+  - password (str): The password to be validated.
+  Raises:
+  - ValueError: If the password does not meet any of the following validation rules:
+    - Password length should be between 8 and 20 characters.
+    - Password should contain at least one digit.
+    - Password should contain at least one uppercase letter.
+    - Password should contain at least one lowercase letter.
+    - Password should contain at least one special character.
+  Returns:
+  - bool: True if the password is valid.
+  """
   if not re.search(r'^.{8,20}$', password):
     raise ValueError("Password length should be between 8 and 20 characters.")
   
